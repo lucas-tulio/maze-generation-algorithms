@@ -135,11 +135,11 @@ public class Maze implements TileBasedMap {
 		// Are there still available movements?
 	    while (!moves.isEmpty()) {
 	    		
-	    		// Possible Directions
-	    		possibleDirections = "";
-	        
-	    		if ((pos.y + 2 < height ) && (blocked[pos.x][pos.y + 2]) && (pos.y + 2 != height - 1)) {
-	        		possibleDirections += DOWN;
+    		// Possible Directions
+    		possibleDirections = "";
+        
+    		if ((pos.y + 2 < height ) && (blocked[pos.x][pos.y + 2]) && (pos.y + 2 != height - 1)) {
+        		possibleDirections += DOWN;
 	        }
 	        
 	        if ((pos.y - 2 >= 0 ) && (blocked[pos.x][pos.y - 2]) && (pos.y - 2 != height - 1) ) {
@@ -157,43 +157,43 @@ public class Maze implements TileBasedMap {
 	        // Check if found any possible movements
 	        if ( possibleDirections.length() > 0 ) {
 	        	
-	        		// Get a random direction
-	        		switch (possibleDirections.charAt(new java.util.Random().nextInt(possibleDirections.length()))) {
-	                
-	        			case '0': // North
-	                    blocked[pos.x][pos.y - 2] = false;
-	                    blocked[pos.x][pos.y - 1] = false;
-	                    pos.y -= 2;
-	                    break;
-	                
-	                case '1': // South
-	                		blocked[pos.x][pos.y + 2] = false;
-	                		blocked[pos.x][pos.y + 1] = false;
-	                    pos.y += 2;
-	                    break;
-	                
-	                case '2': // West
-	                		blocked[pos.x - 2][pos.y] = false;
-	                		blocked[pos.x - 1][pos.y] = false;
-	                    pos.x -= 2;
-	                    break;
-	                
-	                case '3': // East
-	                    blocked[pos.x + 2][pos.y] = false;
-	                    blocked[pos.x + 1][pos.y] = false;
-	                    pos.x += 2;
-	                    break;        
-	            }
+        		// Get a random direction
+        		switch (possibleDirections.charAt(new java.util.Random().nextInt(possibleDirections.length()))) {
+                
+        			case '0': // North
+                    blocked[pos.x][pos.y - 2] = false;
+                    blocked[pos.x][pos.y - 1] = false;
+                    pos.y -= 2;
+                    break;
+                
+                case '1': // South
+                		blocked[pos.x][pos.y + 2] = false;
+                		blocked[pos.x][pos.y + 1] = false;
+                    pos.y += 2;
+                    break;
+                
+                case '2': // West
+                		blocked[pos.x - 2][pos.y] = false;
+                		blocked[pos.x - 1][pos.y] = false;
+                    pos.x -= 2;
+                    break;
+                
+                case '3': // East
+                    blocked[pos.x + 2][pos.y] = false;
+                    blocked[pos.x + 1][pos.y] = false;
+                    pos.x += 2;
+                    break;        
+        	}
 	            
-	        		// Add a new possible movement
-	            moves.add(pos.y + (pos.x * width));
+        	// Add a new possible movement
+	        moves.add(pos.y + (pos.x * width));
 	        
 	        } else {
 	        
-	        		// There are no more possible movements
-	        		back = moves.remove(moves.size() - 1);
-	        		pos.x = back / width;
-	        		pos.y = back % width;
+        		// There are no more possible movements
+        		back = moves.remove(moves.size() - 1);
+        		pos.x = back / width;
+        		pos.y = back % width;
 	        }
 	    }
     }

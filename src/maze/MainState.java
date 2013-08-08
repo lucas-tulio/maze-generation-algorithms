@@ -26,9 +26,6 @@ public class MainState extends BasicGameState {
 	// Speed
 	private int speed;
 	
-	// Timer
-	
-	
 	@Override
 	public int getID() {
 		return 0;
