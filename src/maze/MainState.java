@@ -59,16 +59,7 @@ public class MainState extends BasicGameState {
 		if(i.isKeyPressed(Input.KEY_R)) {
 			restartMaze();
 		}
-		
-		// Movement Speed
-		if(i.isKeyPressed(Input.KEY_1)) {
-			speed = 1;
-		} else if(i.isKeyPressed(Input.KEY_2)) {
-			speed = 5;
-		} else if(i.isKeyPressed(Input.KEY_3)) {
-			speed = 50;
-		}
-		
+				
 		// Camera movement
 		if(i.isKeyDown(Input.KEY_W)) {
 			yOffset += cameraSpeed;
