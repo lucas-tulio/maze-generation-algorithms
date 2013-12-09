@@ -9,9 +9,9 @@ The algorithm will generate a 2D maze and use A* to solve it. It's using lwjgl a
 * Use W, A, S and D to move the camera around
 * Use = and - to increase and decrease the zoom
 
--------------------
+
 Building in Eclipse
--------------------
+-
 
 I've included all the necessary lib files inside the project. In order to import and run it in Eclipse, do the following:
 
