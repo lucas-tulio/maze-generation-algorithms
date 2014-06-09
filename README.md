@@ -3,6 +3,8 @@ Slick2D Maze
 
 Java maze generator and solver.
 
+![demo](https://raw.github.com/lucasdnd/slick2d-maze-generator/master/maze.gif)
+
 The algorithm will generate a 2D maze and use [A*](http://en.wikipedia.org/wiki/A*_search_algorithm) to solve it. It's using [lwjgl](http://lwjgl.org/) and [Slick2D](http://slick.ninjacave.com/) to render the maze.
 
 * Press R to generate another maze
