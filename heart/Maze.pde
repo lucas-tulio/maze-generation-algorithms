@@ -1,0 +1,99 @@
+class Maze {
+  boolean[][] blocked;
+  int size;
+  int U = 0;
+  int D = 1;
+  int L = 2;
+  int R = 3;
+  
+  public Maze(int size) {
+    this.size = size;
+    blocked = new boolean[size][size];
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        blocked[i][j] = true;
+      }
+    }
+  }
+  
+  /**
+   * Runs the algorithm to generate the Maze
+   */
+  public void createMaze() {
+    
+    // Basic settings
+    int back;
+    String possibleDirections;
+    Point pos = new Point(1, 1);    // Leave the 0, 0 for the outer wall
+    
+    // Possible movement list
+    ArrayList<Integer> moves = new ArrayList<Integer>();
+    moves.add(pos.y + (pos.x * size));
+    
+    // Are there still available movements?
+      while (!moves.isEmpty()) {
+          
+        // Possible Directions
+        possibleDirections = "";
+        
+        if ((pos.y + 2 < size ) && (blocked[pos.x][pos.y + 2]) && (pos.y + 2 != size - 1)) {
+            possibleDirections += D;
+          }
+          
+          if ((pos.y - 2 >= 0 ) && (blocked[pos.x][pos.y - 2]) && (pos.y - 2 != size - 1) ) {
+              possibleDirections += U;
+          }
+          
+          if ((pos.x - 2 >= 0 ) && (blocked[pos.x - 2][pos.y]) && (pos.x - 2 != size - 1) ) {
+              possibleDirections += L;
+          }
+          
+          if ((pos.x + 2 < size ) && (blocked[pos.x + 2][pos.y])  && (pos.x + 2 != size - 1) ) {
+              possibleDirections += R;
+          }
+          
+          // Check if found any possible movements
+          if ( possibleDirections.length() > 0 ) {
+            
+            // Get a random direction
+            switch (possibleDirections.charAt(new java.util.Random().nextInt(possibleDirections.length()))) {
+                
+              case '0': // North
+                    blocked[pos.x][pos.y - 2] = false;
+                    blocked[pos.x][pos.y - 1] = false;
+                    pos.y -= 2;
+                    break;
+                
+                case '1': // South
+                    blocked[pos.x][pos.y + 2] = false;
+                    blocked[pos.x][pos.y + 1] = false;
+                    pos.y += 2;
+                    break;
+                
+                case '2': // West
+                    blocked[pos.x - 2][pos.y] = false;
+                    blocked[pos.x - 1][pos.y] = false;
+                    pos.x -= 2;
+                    break;
+                
+                case '3': // East
+                    blocked[pos.x + 2][pos.y] = false;
+                    blocked[pos.x + 1][pos.y] = false;
+                    pos.x += 2;
+                    break;        
+          }
+              
+          // Add a new possible movement
+          moves.add(pos.y + (pos.x * size));
+          
+          } else {
+          
+            // There are no more possible movements
+            back = moves.remove(moves.size() - 1);
+            pos.x = back / size;
+            pos.y = back % size;
+          }
+      }
+    }
+  
+}
