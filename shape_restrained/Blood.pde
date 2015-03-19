@@ -7,41 +7,40 @@ class Blood {
   }
   
   public void update(Maze maze) {
-    Drop[] newDrops = new Drop[4];
     
+    // Block the blood areas
     for (Drop d : drops) {
-      if (d.alive) {
-        if (!maze.blocked[d.x + 1][d.y]) { // right
-          newDrops[0] = new Drop(d.x + 1, d.y);
-          maze.blocked[d.x + 1][d.y] = true;
-        }
-        if (!maze.blocked[d.x - 1][d.y]) { // left
-          newDrops[1] = new Drop(d.x - 1, d.y);
-          maze.blocked[d.x - 1][d.y] = true;
-        }
-        if (!maze.blocked[d.x][d.y + 1]) { // up
-          newDrops[2] = new Drop(d.x, d.y + 1);
-          maze.blocked[d.x][d.y + 1] = true;
-        }
-        if (!maze.blocked[d.x][d.y - 1]) { // down
-          newDrops[3] = new Drop(d.x, d.y - 1);
-          maze.blocked[d.x][d.y - 1] = true;
-        }
-      }
-      d.alive = false;
+      maze.blocked[d.x][d.y] = true;
     }
     
-    for (int i = 0; i < newDrops.length; i++) {
-      if (newDrops[i] != null) {
-        drops.add(newDrops[i]);
+    // Drop movement
+    ArrayList<Drop> newDrops = new ArrayList<Drop>();
+    
+    for (Drop d : drops) {
+      if (d.life == 2) {
+        if (!maze.blocked[d.x + 1][d.y]) {
+          newDrops.add(new Drop(d.x + 1, d.y));
+        }
+        if (!maze.blocked[d.x - 1][d.y]) {
+          newDrops.add(new Drop(d.x - 1, d.y));
+        }
+        if (!maze.blocked[d.x][d.y + 1]) {
+          newDrops.add(new Drop(d.x, d.y + 1));
+        }
+        if (d.y > 0) { // gambi alert
+          if (!maze.blocked[d.x][d.y - 1]) {
+            newDrops.add(new Drop(d.x, d.y - 1));
+          }
+        }
+      } else if (d.life == 0) {
+        maze.blocked[d.x][d.y] = false;
       }
+      d.life--;
     }
     
-    int aliveCount = 0;
-    for (Drop d : drops) {
-      if (d.alive) {
-        aliveCount++;
-      }
+    // Create the new drops
+    for (Drop d : newDrops) {
+      drops.add(d);
     }
   }
 }

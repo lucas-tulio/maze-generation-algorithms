@@ -11,6 +11,7 @@ class Maze {
     this.size = size;
     blocked = new boolean[size][size];
     shape = new Shape(size);
+    addBorders();
   }
   
   /**
@@ -104,6 +105,20 @@ class Maze {
         back = moves.remove(moves.size() - 1);
         pos.x = back / size;
         pos.y = back % size;
+      }
+    }
+  }
+  
+  /**
+   * Add an extra line on the corners
+   */
+  private void addBorders() {
+    
+    boolean newMaze[][] = new boolean[size + 2][size];
+    
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        
       }
     }
   }

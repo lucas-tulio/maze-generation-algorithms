@@ -1,16 +1,16 @@
 class Drop extends Point {
-  int lifetime;
-  boolean alive;
+  int opacity;
+  int life;
   
   public Drop(int x, int y) {
     super(x, y);
-    lifetime = 255;
-    alive = true;
+    opacity = 255;
+    life = 2;
   }
   
   public void update() {
-    if (lifetime >= 0) {
-      lifetime--;
+    if (opacity > 0) {
+      opacity = opacity - 2;
     }
   }
 }
