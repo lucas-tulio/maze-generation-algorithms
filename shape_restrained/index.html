@@ -1,19 +1,16 @@
 <script src="./js/processing.min.js"></script>
-<div style="display: block; width: 1000px; margin: auto;">
-  <canvas id="canvas" tabindex="1" data-processing-sources="
-    ./Point.pde
-    ./Drop.pde
-    ./MazeShape.pde
-    ./Maze.pde
-    ./Blood.pde
-    ./shape_restrained.pde
-    "></canvas>
 
-  <p><a href="http://github.com/lucasdnd/maze-generation-algorithms">View source code on Github</a></p>
-</div>
-<script>
-  window.onload = function() {
-    var canvas = document.getElementById("canvas");
-    canvas.focus();
-  };
-</script>
+<body style="background-color: #000;">
+  <div style="display: block; width: 1000px; margin: auto; background-color: #000;">
+    <canvas id="canvas" tabindex="1" data-processing-sources="
+      ./Point.pde
+      ./Drop.pde
+      ./MazeShape.pde
+      ./Maze.pde
+      ./Blood.pde
+      ./shape_restrained.pde
+      "></canvas>
+
+    <p><a style="color: #eee; font-family: Monaco, monospace;" href="http://github.com/lucasdnd/maze-generation-algorithms">View source code on Github</a></p>
+  </div>
+</body>
