@@ -41,25 +41,25 @@ class Maze {
       possibleDirections = "";
       
       if ((pos.y + 2 < size ) && (pos.y + 2 != size - 1) // Maze limits
-        && (blocked[pos.x][pos.y + 2]) && (shape.blocked[pos.x][pos.y + 2])
+        && (blocked[pos.x][pos.y + 2]) && (shape.free[pos.x][pos.y + 2])
       ) {
         possibleDirections += D;
       }
       
       if ((pos.y - 2 >= 0 ) && (pos.y - 2 != size - 1)
-        && (blocked[pos.x][pos.y - 2]) && (shape.blocked[pos.x][pos.y - 2])
+        && (blocked[pos.x][pos.y - 2]) && (shape.free[pos.x][pos.y - 2])
       ) {
           possibleDirections += U;
       }
       
       if ((pos.x - 2 >= 0 ) && (pos.x - 2 != size - 1)
-        && (blocked[pos.x - 2][pos.y]) && (shape.blocked[pos.x - 2][pos.y])
+        && (blocked[pos.x - 2][pos.y]) && (shape.free[pos.x - 2][pos.y])
       ) {
           possibleDirections += L;
       }
       
       if ((pos.x + 2 < size ) && (pos.x + 2 != size - 1)
-        && (blocked[pos.x + 2][pos.y]) && (shape.blocked[pos.x + 2][pos.y])
+        && (blocked[pos.x + 2][pos.y]) && (shape.free[pos.x + 2][pos.y])
       ) {
           possibleDirections += R;
       }
