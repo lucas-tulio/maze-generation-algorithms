@@ -107,5 +107,16 @@ class Maze {
       }
     }
   }
+  
+  public Point getFreePoint() {
+    for (int i = size/2; i < size; i++) {
+      for (int j = size/2; j < size; j++) {
+        if (!blocked[i][j]) {
+          return new Point(i, j);
+        }
+      }
+    }
+    return new Point(-1, -1);
+  }
 }
 

@@ -1,7 +1,8 @@
 class Blood {
   ArrayList<Drop> drops;
   
-  public Blood() {
+  public Blood(int x, int y) {
     drops = new ArrayList<Drop>();
+    drops.add(new Drop(x, y));
   }
 }

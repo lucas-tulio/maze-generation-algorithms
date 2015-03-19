@@ -5,4 +5,15 @@ class Drop extends Point {
     super(x, y);
     lifetime = 255;
   }
+  
+  public void update() {
+    
+    // Lifetime
+    if (lifetime >= 0) {
+      lifetime--;
+    }
+    
+    // Movement
+    
+  }
 }
