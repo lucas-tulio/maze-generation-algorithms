@@ -1,6 +1,6 @@
 class Maze {
+  Shape shape;
   boolean[][] blocked;
-  boolean[][] shape;
   int size;
   int U = 0;
   int D = 1;
@@ -10,9 +10,7 @@ class Maze {
   public Maze(int size) {
     this.size = size;
     blocked = new boolean[size][size];
-    shape = new boolean[size][size];
-    
-    createRestrainShape();
+    shape = new Shape(size);
   }
   
   /**
@@ -43,25 +41,25 @@ class Maze {
       possibleDirections = "";
       
       if ((pos.y + 2 < size ) && (pos.y + 2 != size - 1) // Maze limits
-        && (blocked[pos.x][pos.y + 2]) && (shape[pos.x][pos.y + 2])
+        && (blocked[pos.x][pos.y + 2]) && (shape.blocked[pos.x][pos.y + 2])
       ) {
         possibleDirections += D;
       }
       
       if ((pos.y - 2 >= 0 ) && (pos.y - 2 != size - 1)
-        && (blocked[pos.x][pos.y - 2]) && (shape[pos.x][pos.y - 2])
+        && (blocked[pos.x][pos.y - 2]) && (shape.blocked[pos.x][pos.y - 2])
       ) {
           possibleDirections += U;
       }
       
       if ((pos.x - 2 >= 0 ) && (pos.x - 2 != size - 1)
-        && (blocked[pos.x - 2][pos.y]) && (shape[pos.x - 2][pos.y])
+        && (blocked[pos.x - 2][pos.y]) && (shape.blocked[pos.x - 2][pos.y])
       ) {
           possibleDirections += L;
       }
       
       if ((pos.x + 2 < size ) && (pos.x + 2 != size - 1)
-        && (blocked[pos.x + 2][pos.y]) && (shape[pos.x + 2][pos.y])
+        && (blocked[pos.x + 2][pos.y]) && (shape.blocked[pos.x + 2][pos.y])
       ) {
           possibleDirections += R;
       }
@@ -106,17 +104,6 @@ class Maze {
         back = moves.remove(moves.size() - 1);
         pos.x = back / size;
         pos.y = back % size;
-      }
-    }
-  }
-  
-  /**
-  * Restrain the maze into a shape
-  */
-  public void createRestrainShape() {
-    for (int i = 0; i < size / 2; i++) {
-      for (int j = 0; j < size / 2; j++) {
-        shape[i][j] = true;
       }
     }
   }
