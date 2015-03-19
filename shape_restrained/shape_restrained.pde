@@ -5,7 +5,7 @@ int mazeSize = 60;
 Drop newDrop;
 
 void setup() {
-  size((mazeSize - 1) * tileSize, int(((mazeSize - 1) * tileSize) / 1.25));
+  size((mazeSize - 1) * tileSize, int(((mazeSize - 1) * tileSize) / 1.3));
   frameRate(60);
   noStroke();
   
