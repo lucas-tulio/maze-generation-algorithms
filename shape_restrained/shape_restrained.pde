@@ -1,10 +1,12 @@
 Maze maze;
 Blood blood;
 int tileSize = 4;
-int mazeSize = 200;
+int mazeSize = 50;
 
 void setup() {
   size((mazeSize - 1) * tileSize + 1, (mazeSize - 1) * tileSize + 1);
+  frameRate(10);
+  
   maze = new Maze(mazeSize);
   maze.createMaze();
   
@@ -35,9 +37,9 @@ void draw() {
     
     d.update();
     
-    if (d.lifetime >= 0) {
+    if (d.alive) {
       rect(d.y * tileSize, d.x * tileSize, tileSize, tileSize);
-    }    
+    }
   }
 }
 

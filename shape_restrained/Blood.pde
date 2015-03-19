@@ -7,33 +7,41 @@ class Blood {
   }
   
   public void update(Maze maze) {
-    ArrayList<Drop> newDrops = new ArrayList<Drop>();
+    Drop[] newDrops = new Drop[4];
     
     for (Drop d : drops) {
-      
       if (d.alive) {
         if (!maze.blocked[d.x + 1][d.y]) { // right
-          newDrops.add(new Drop(d.x + 1, d.y));
+          newDrops[0] = new Drop(d.x + 1, d.y);
+          maze.blocked[d.x + 1][d.y] = true;
         }
-        
         if (!maze.blocked[d.x - 1][d.y]) { // left
-          newDrops.add(new Drop(d.x - 1, d.y));
+          newDrops[1] = new Drop(d.x - 1, d.y);
+          maze.blocked[d.x - 1][d.y] = true;
         }
-        
         if (!maze.blocked[d.x][d.y + 1]) { // up
-          newDrops.add(new Drop(d.x, d.y + 1));
+          newDrops[2] = new Drop(d.x, d.y + 1);
+          maze.blocked[d.x][d.y + 1] = true;
         }
-        
         if (!maze.blocked[d.x][d.y - 1]) { // down
-          newDrops.add(new Drop(d.x, d.y -1));
+          newDrops[3] = new Drop(d.x, d.y - 1);
+          maze.blocked[d.x][d.y - 1] = true;
         }
       }
-      
       d.alive = false;
     }
     
-    for (Drop d : newDrops) {
-      drops.add(d);
+    for (int i = 0; i < newDrops.length; i++) {
+      if (newDrops[i] != null) {
+        drops.add(newDrops[i]);
+      }
+    }
+    
+    int aliveCount = 0;
+    for (Drop d : drops) {
+      if (d.alive) {
+        aliveCount++;
+      }
     }
   }
 }
