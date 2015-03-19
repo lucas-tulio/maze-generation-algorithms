@@ -1,7 +1,7 @@
 Maze maze;
 Blood blood;
 int tileSize = 4;
-int mazeSize = 200;
+int mazeSize = 50;
 
 void setup() {
   size((mazeSize - 1) * tileSize + 1, (mazeSize - 1) * tileSize + 1);
