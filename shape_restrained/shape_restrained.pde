@@ -10,13 +10,8 @@ void setup() {
   
   Point freePoint = maze.getFreePoint();
   blood = new Blood(freePoint.x, freePoint.y);
-}
-
-void draw() {
   
   background(255);
-  
-  // Draw the maze
   stroke(0);
   fill(0);
   for (int i = 0; i < mazeSize - 1; i++) {
@@ -26,8 +21,14 @@ void draw() {
       }
     }
   }
+}
+
+void draw() {
   
   // Draw the blood
+  stroke(255, 0, 0);
+  fill(255, 0, 0);
+  
   blood.update(maze);
   
   for (Drop d : blood.drops) {
@@ -35,9 +36,7 @@ void draw() {
     d.update();
     
     if (d.lifetime >= 0) {
-      stroke(d.lifetime, d.lifetime-255, d.lifetime-255);
-      fill(d.lifetime, d.lifetime-255, d.lifetime-255);
-      rect(d.x * tileSize, d.y * tileSize, tileSize, tileSize);
+      rect(d.y * tileSize, d.x * tileSize, tileSize, tileSize);
     }    
   }
 }
