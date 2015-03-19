@@ -1,8 +1,8 @@
-class Shape {
+class MazeShape {
   boolean free[][];
   int size;
   
-  public Shape(int size) {
+  public MazeShape(int size) {
     this.size = size;
     free = new boolean[size][size];
     resetShape();
@@ -11,8 +11,8 @@ class Shape {
   
   public void createHeartShape() {
     
-    int midHeight = size / 3;
-    int midWidth = size / 2;
+    int midHeight = int(size / 3);
+    int midWidth = int(size / 2);
     
     // Upper left
     boolean upperLeft[][] = new boolean[size][size];
@@ -32,15 +32,15 @@ class Shape {
     
     // Lower left
     boolean lowerLeft[][] = new boolean[size][size];
-    int y = size / 4;
-    for (int x = 0; x < size / 2; x++) {
+    int y = int(size / 4);
+    for (int x = 0; x < int(size / 2); x++) {
       lowerLeft[y][x] = true;
       y++;
     }
     
     // Lower right
     boolean lowerRight[][] = new boolean[size][size];
-    for (int x = size/2; x < size; x++) {
+    for (int x = int(size/2); x < size; x++) {
       lowerRight[y][x] = true;
       y--;
     }
@@ -48,7 +48,7 @@ class Shape {
     // Apply the shape: upperLeft + upperRight
     for (int i = 0; i < size; i++) {
       boolean canBlock = true;
-      for (int j = 0; j < size/4; j++) {
+      for (int j = 0; j < int(size/4); j++) {
         if (upperLeft[j][i] || upperRight[j][i]) {
           canBlock = false;
         }
@@ -61,7 +61,7 @@ class Shape {
     // Apply the shape: lowerLeft + lowerRight
     for (int i = 0; i < size; i++) {
       boolean canBlock = false;
-      for (int j = size/4; j < size; j++) {
+      for (int j = int(size/4); j < size; j++) {
         if (lowerLeft[j][i] || lowerRight[j][i]) {
           canBlock = true;
         }
@@ -73,8 +73,8 @@ class Shape {
   }
   
   public void createBasicShape() {
-    for (int i = 0; i < size / 2; i++) {
-      for (int j = 0; j < size / 2; j++) {
+    for (int i = 0; i < int(size / 2); i++) {
+      for (int j = 0; j < int(size / 2); j++) {
         free[i][j] = false;
       }
     }

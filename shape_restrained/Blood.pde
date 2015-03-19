@@ -8,11 +8,6 @@ class Blood {
   
   public void update(Maze maze) {
     
-    // Block the blood areas
-//    for (Drop d : drops) {
-//      maze.blocked[d.x][d.y] = true;
-//    }
-    
     // Drop movement
     ArrayList<Drop> newDrops = new ArrayList<Drop>();
     

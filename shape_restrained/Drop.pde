@@ -7,11 +7,7 @@ class Drop extends Point {
     opacity = 255;
     life = 2;
   }
-  
-  public Drop(Point p) {
-    this(p.x, p.y);
-  }
-  
+
   public void update() {
     if (opacity > 0) {
       opacity = opacity - 2;

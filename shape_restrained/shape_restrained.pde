@@ -1,11 +1,11 @@
 Maze maze;
 Blood blood;
-int tileSize = 3;
-int mazeSize = 100;
+int tileSize = 4;
+int mazeSize = 50;
 Drop newDrop;
 
 void setup() {
-  size((mazeSize - 1) * tileSize + 1, (mazeSize - 1) * tileSize + 1);
+  size((mazeSize - 1) * tileSize + 1, int(((mazeSize - 1) * tileSize + 1) / 1.25));
   frameRate(60);
   noStroke();
   
