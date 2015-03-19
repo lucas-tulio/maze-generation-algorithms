@@ -9,15 +9,18 @@ class Blood {
   public void update(Maze maze) {
     
     // Block the blood areas
-    for (Drop d : drops) {
-      maze.blocked[d.x][d.y] = true;
-    }
+//    for (Drop d : drops) {
+//      maze.blocked[d.x][d.y] = true;
+//    }
     
     // Drop movement
     ArrayList<Drop> newDrops = new ArrayList<Drop>();
     
     for (Drop d : drops) {
       if (d.life == 2) {
+        
+        maze.blocked[d.x][d.y] = true;
+        
         if (!maze.blocked[d.x + 1][d.y]) {
           newDrops.add(new Drop(d.x + 1, d.y));
         }

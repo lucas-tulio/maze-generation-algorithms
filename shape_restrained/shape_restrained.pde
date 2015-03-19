@@ -1,7 +1,8 @@
 Maze maze;
 Blood blood;
-int tileSize = 4;
-int mazeSize = 50;
+int tileSize = 3;
+int mazeSize = 100;
+Drop newDrop;
 
 void setup() {
   size((mazeSize - 1) * tileSize + 1, (mazeSize - 1) * tileSize + 1);
@@ -27,20 +28,29 @@ void draw() {
   }
   
   blood.update(maze);
+  boolean allDead = true;
   for (Drop d : blood.drops) {
+    
+    if (d.life > 0) {
+      allDead = false;
+    }
+    
     d.update();
     
-    // debug
-//    if (d.life == 2) {
-//      fill(0, 0, 255);
-//    } else if (d.life == 1) {
-//      fill(0, 255, 0);
-//    } else {
-//      fill(255, 0, 0);
-//    }
     fill(255, 255 - d.opacity, 255 - d.opacity);
     rect(d.y * tileSize, d.x * tileSize, tileSize, tileSize);
   }
+  
+  // Reset the maze and the blood
+  if (allDead) {
+    
+    for (Drop d : blood.drops) {
+      maze.blocked[d.x][d.y] = false;
+    }
+    
+    Drop lastDrop = blood.drops.get(blood.drops.size() - 1);
+    newDrop = new Drop(lastDrop.x, lastDrop.y);
+    blood.drops.add(newDrop);
+  }
 }
-
 
