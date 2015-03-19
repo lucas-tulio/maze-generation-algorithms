@@ -70,18 +70,6 @@ class Shape {
         }
       }
     }
-    
-    // DEBUG: print the result
-    for (int i = 0; i < size; i++) {
-      for (int j = 0; j < size; j++) {
-        if (free[i][j]) {
-          print(" ");
-        } else {
-          print("*");
-        }
-      }
-      print("\n");
-    }
   }
   
   public void createBasicShape() {

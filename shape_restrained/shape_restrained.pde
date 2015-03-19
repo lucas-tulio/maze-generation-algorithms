@@ -20,7 +20,7 @@ void draw() {
   for (int i = 0; i < mazeSize - 1; i++) {
     for (int j = 0; j < mazeSize - 1; j++) {
       if (maze.blocked[i][j]) {
-        rect(i * tileSize, j * tileSize, tileSize, tileSize);
+        rect(j * tileSize, i * tileSize, tileSize, tileSize);
       }
     }
   }

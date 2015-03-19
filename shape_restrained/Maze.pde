@@ -28,7 +28,7 @@ class Maze {
     // Basic settings
     int back;
     String possibleDirections;
-    Point pos = new Point(1, 20);    // Leave the 0, 0 for the outer wall
+    Point pos = new Point(1, size / 4);    // Leave the 0, 0 for the outer wall
     
     // Possible movement list
     ArrayList<Integer> moves = new ArrayList<Integer>();
