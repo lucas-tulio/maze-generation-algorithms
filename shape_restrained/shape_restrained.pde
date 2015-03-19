@@ -28,6 +28,8 @@ void draw() {
   }
   
   // Draw the blood
+  blood.update(maze);
+  
   for (Drop d : blood.drops) {
     
     d.update();
