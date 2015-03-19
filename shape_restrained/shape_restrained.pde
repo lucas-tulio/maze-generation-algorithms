@@ -16,7 +16,6 @@ void draw() {
   background(255);
   
   fill(0);
-  stroke(255);
   
   for (int i = 0; i < mazeSize - 1; i++) {
     for (int j = 0; j < mazeSize - 1; j++) {
@@ -25,5 +24,8 @@ void draw() {
       }
     }
   }
-  
+}
+
+void keyPressed() {
+  maze.createMaze();
 }
