@@ -10,7 +10,7 @@ class Drop extends Point {
 
   public void update() {
     if (opacity > 0) {
-      opacity = opacity - 2;
+      opacity = opacity - 1;
     }
   }
 }
