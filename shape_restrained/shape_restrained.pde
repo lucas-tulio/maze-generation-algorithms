@@ -1,6 +1,6 @@
 Maze maze;
 Blood blood;
-int tileSize = 16;
+int tileSize = 15;
 int mazeSize = 60;
 Drop newDrop;
 
@@ -15,7 +15,7 @@ void setup() {
   blood = new Blood(freePoint.x, freePoint.y);
   
   background(255);
-  fill(0, 0, 0);
+  fill(0);
   for (int i = 0; i < mazeSize - 1; i++) {
     for (int j = 0; j < mazeSize - 1; j++) {
       if (maze.blocked[i][j]) {
@@ -51,6 +51,6 @@ void draw() {
     Drop lastDrop = blood.drops.get(blood.drops.size() - 1);
     newDrop = new Drop(lastDrop.x, lastDrop.y);
     blood.drops.add(newDrop);
-  }
+  }  
 }
 

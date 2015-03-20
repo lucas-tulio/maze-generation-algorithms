@@ -8,9 +8,11 @@ class Blood {
   
   public void update(Maze maze) {
     
-    // Drop movement
+    // Drop life control
     ArrayList<Drop> newDrops = new ArrayList<Drop>();
+    ArrayList<Drop> deadDrops = new ArrayList<Drop>();
     
+    // Drop movement
     for (Drop d : drops) {
       if (d.life == 2) {
         
@@ -34,11 +36,20 @@ class Blood {
         maze.blocked[d.x][d.y] = false;
       }
       d.life--;
+      
+      if (d.canDie) {
+        deadDrops.add(d);
+      }
     }
     
     // Create the new drops
     for (Drop d : newDrops) {
       drops.add(d);
+    }
+    
+    // Kill off the old ones
+    for (Drop d : deadDrops) {
+      drops.remove(d);
     }
   }
 }
