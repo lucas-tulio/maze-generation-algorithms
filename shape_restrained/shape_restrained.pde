@@ -13,9 +13,6 @@ void setup() {
   maze.createMaze();
   Point freePoint = maze.getFreePoint();
   blood = new Blood(freePoint.x, freePoint.y);
-}
-
-void draw() {
   
   background(255);
   fill(0, 0, 0);
@@ -26,6 +23,9 @@ void draw() {
       }
     }
   }
+}
+
+void draw() {
   
   blood.update(maze);
   boolean allDead = true;
