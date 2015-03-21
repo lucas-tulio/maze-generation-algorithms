@@ -9,20 +9,7 @@ void setup() {
   frameRate(60);
   noStroke();
   
-  maze = new Maze(mazeSize);
-  maze.createMaze();
-  Point freePoint = maze.getFreePoint();
-  blood = new Blood(freePoint.x, freePoint.y);
-  
-  background(255);
-  fill(0);
-  for (int i = 0; i < mazeSize - 1; i++) {
-    for (int j = 0; j < mazeSize - 1; j++) {
-      if (maze.blocked[i][j]) {
-        rect(j * tileSize, i * tileSize, tileSize, tileSize);
-      }
-    }
-  }
+  startMaze();
 }
 
 void draw() {
@@ -54,3 +41,23 @@ void draw() {
   }  
 }
 
+void startMaze() {
+  maze = new Maze(mazeSize);
+  maze.createMaze();
+  Point freePoint = maze.getFreePoint();
+  blood = new Blood(freePoint.x, freePoint.y);
+  
+  background(255);
+  fill(0);
+  for (int i = 0; i < mazeSize - 1; i++) {
+    for (int j = 0; j < mazeSize - 1; j++) {
+      if (maze.blocked[i][j]) {
+        rect(j * tileSize, i * tileSize, tileSize, tileSize);
+      }
+    }
+  }
+}
+
+void keyPressed() {
+  startMaze();
+}
