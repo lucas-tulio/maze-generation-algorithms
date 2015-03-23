@@ -3,6 +3,7 @@ Blood blood;
 int tileSize = 15;
 int mazeSize = 60;
 Drop newDrop;
+boolean showDebug = false;
 
 void setup() {
   size((mazeSize - 1) * tileSize, int(((mazeSize - 1) * tileSize) / 1.3));
@@ -14,7 +15,12 @@ void setup() {
 
 void draw() {
   
+  if (showDebug) {
+    drawMaze();
+  }
+  
   blood.update(maze);
+  
   boolean allDead = true;
   for (Drop d : blood.drops) {
     
@@ -38,15 +44,16 @@ void draw() {
     Drop lastDrop = blood.drops.get(blood.drops.size() - 1);
     newDrop = new Drop(lastDrop.x, lastDrop.y);
     blood.drops.add(newDrop);
-  }  
+  }
+
+  // Debug
+  if (showDebug) {
+    fill(255);
+    text("drops: " + blood.drops.size(), 20, 20);
+  }
 }
 
-void startMaze() {
-  maze = new Maze(mazeSize);
-  maze.createMaze();
-  Point freePoint = maze.getFreePoint();
-  blood = new Blood(freePoint.x, freePoint.y);
-  
+void drawMaze() {
   background(255);
   fill(0);
   for (int i = 0; i < mazeSize - 1; i++) {
@@ -58,6 +65,18 @@ void startMaze() {
   }
 }
 
+void startMaze() {
+  maze = new Maze(mazeSize);
+  maze.createMaze();
+  Point freePoint = maze.getFreePoint();
+  blood = new Blood(freePoint.x, freePoint.y);
+  drawMaze();
+}
+
 void keyPressed() {
-  startMaze();
+  if (keyCode == 68) {
+    showDebug = !showDebug;
+  } else if (keyCode == 82) {
+    startMaze();
+  }
 }

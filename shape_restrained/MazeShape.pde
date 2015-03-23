@@ -11,9 +11,6 @@ class MazeShape {
   
   public void createHeartShape() {
     
-    int midHeight = int(size / 3);
-    int midWidth = int(size / 2);
-    
     // Upper left
     boolean upperLeft[][] = new boolean[size][size];
     for (float i = 0; i < Math.PI; i = i + 0.005) {
