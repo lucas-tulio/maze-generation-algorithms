@@ -1,7 +1,5 @@
-Maze Generation Algorithms
-==========================
+Maze Generation
+===============
 
-Several maze generation algorithms.
-
-![demo](https://raw.github.com/lucasdnd/slick2d-maze-generator/master/maze.gif)
+Maze generation in p5js.
 
